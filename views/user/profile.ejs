@@ -1,0 +1,91 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="container">
+    <div id="profile">
+        <div id="user-welcome">
+            <h2>Welcome, <%= user.firstName %></h2>
+        </div>
+    </div>
+    <div class="right-column">
+        
+        <div id="user-items">
+            <h2>My Listings</h2>
+            <% if (vinyls.length > 0) { %>
+                <table class="user-listings-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% vinyls.forEach(vinyl => { %>
+                            <tr class="user-listing">
+                                <td class="listing-info">
+                                    <a href='/vinyls/<%= vinyl.id %>'><%= vinyl.title %></a>
+                                </td>
+                                <td class="status"><%= vinyl.active ? "active" : "sold" %></td>
+                                <td class="actions">
+                                    <form>
+                                        <button class="edit-btn" type="submit" formmethod="GET" formaction="/vinyls/<%=vinyl.id%>/edit">
+                                            Edit <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                    </form>
+                                    <form action="/vinyls/<%=vinyl.id%>?_method=DELETE" method="POST">
+                                        <button class="delete-btn" type="submit">
+                                            Delete <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                    <form action="/vinyls/<%= vinyl._id %>/offers" method="GET">
+                                        <button class="view-offers-btn" type="submit" <% if (!vinyl.totalOffers || vinyl.totalOffers === 0) { %> disabled <% } %>>
+                                            View Offers
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>You currently have no items posted for sale.</p>
+            <% } %>
+        </div>
+
+        <div id="user-offers">
+            <h2>My Offers</h2>
+        
+            <% if (offersMade.length > 0) { %>
+                <table class="user-offers-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% offersMade.forEach(offer => { %>
+                            <tr class="user-offer">
+                                <td class="offer-item">
+                                    <% if (offer.item) { %>
+                                        <a href='/vinyls/<%= offer.item._id %>'><%= offer.item.title %></a>
+                                    <% } else { %>
+                                        <span>Item no longer available</span>
+                                    <% } %>
+                                </td>
+                                <td class="offer-status"><%= offer.status %></td>
+                                <td class="offer-amount">$<%= offer.amount.toFixed(2) %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>You haven't made any offers yet.</p>
+            <% } %>
+        </div>        
+    </div>
+
+</div> 
+
+<%- include('../partials/footer.ejs') %>

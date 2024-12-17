@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs')%>
+<div class="grid">
+    <div class="album-image">
+        <% if (vinyl.image) { %>
+            <img src="<%= vinyl.image %>" alt="Image of <%= vinyl.title %>">
+        <% } else { %>
+            <img src="/images/default-vinyl.png" alt="Default Vinyl Image">
+        <% } %>
+    </div>
+    <div class="item">
+        <div class="item-content">
+            <h2 id="item-name"><%= vinyl.title %></h2>
+            <div class="item-details">
+                <p id="item-condition">Condition: <strong><%= vinyl.condition %></strong></p>
+                <p id="offers">Total Offers: <strong><%= vinyl.totalOffers || 0 %></strong></p>
+                
+                <% if (vinyl.totalOffers > 0 && vinyl.active) { %>
+                    <p id="highest-offer">Highest Offer: <strong>$<%= vinyl.highestOffer.toFixed(2) %></strong></p>
+                <% } %>
+                
+                <p id="item-price">Price: <strong>$<%= vinyl.price.toFixed(2) %></strong></p>
+                <p>Seller: <%= vinyl.seller.firstName %> <%= vinyl.seller.lastName %></p>
+                <p id="item-description"><strong><%= vinyl.details %></strong></p>
+            </div>
+
+            <% if (vinyl.active) { %>
+                <div class="offer-form">
+                    <h3>Make an Offer:</h3>
+                    <form action="/vinyls/<%= vinyl._id %>/offers" method="POST">
+                        <input type="number" id="amount" name="amount" step="0.01" min="0.01" required>
+                        <button type="submit">Submit Offer</button>
+                    </form>
+                </div>
+            <% } else { %>
+                <p>This item is no longer available for offers.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs')%>

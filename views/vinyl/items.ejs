@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs')%>
+<div class="container">
+    <% if(vinyls.length) { %> 
+       <% vinyls.forEach(vinyl => { %>
+           <div class="item">
+            <a href="/vinyls/<%= vinyl._id %>">
+                <img src="<%= vinyl.image %>" alt="<%= vinyl.title %>">
+            </a>
+
+            <div class="item-details">
+                <p class="album-title"><%= vinyl.title %></p>
+                <p><%= vinyl.condition %></p> 
+                <p>
+                    <span class="price">$<%= vinyl.price.toFixed(2) %></span> | 
+                    <span class="offer">
+                        Offers: 
+                        <% if (vinyl.totalOffers > 0) { %>
+                            <%= vinyl.totalOffers %>
+                        <% } else { %>
+                            0
+                        <% } %>
+                    </span>
+                </p>
+            </div>
+        </div> 
+      <% }); %> 
+    <% } else { %> 
+        <p>No vinyls to display.</p>
+   <% } %>
+</div>
+<%- include('../partials/footer.ejs')%>

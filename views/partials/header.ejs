@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/<%= cssFile %>">
+    <link rel="icon" href="/images/icon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/55733fc0ce.js" crossorigin="anonymous"></script>
+    <title>Vinyl Vibes</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"> <img src="/images/vinylVibes.png" alt="Vinyl Vibes Logo"></a>
+                <button class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <ul class="navbar-nav">
+                <li><a href="/vinyls" class="nav-item">Browse</a></li>
+                <li><a href="/vinyls/new" class="nav-item">Sell</a></li>
+
+                <% if(!user) { %>
+                <li><a href="/users/login" class="nav-item">Login</a></li>
+                <li><a href="/users/new" class="nav-item">Sign Up</a></li>
+                <% } else { %>
+                <li><a href="/users/profile" class="nav-item">My Account</a></li>
+                <li><a href="/users/logout" class="nav-item">Logout</a></li>
+            <%  } %>
+            </ul>   
+
+            <div class="search">
+              <div class="search-container">
+                <form action="/vinyls" method="GET">
+                  <input type="text" name="search" placeholder="Search Vinyls..." value="<%= typeof query !== 'undefined' ? query : '' %>">
+                  <button type="submit">Search</button>
+                </form>
+            </div>
+          </div>      
+        </div>
+    </nav>
+    
+    <div class="flash-messages">
+        <% if (errorMessages && errorMessages.length > 0) { %>
+            <div class="flash-message error">
+                <% errorMessages.forEach(message => { %>
+                    <p><%= message %></p>
+                <% }) %>
+            </div>
+        <% } %>
+    
+        <% if (successMessages && successMessages.length > 0) { %>
+            <div class="flash-message success">
+                <% successMessages.forEach(message => { %>
+                    <p><%= message %></p>
+                <% }) %>
+            </div>
+        <% } %>  
+    </div>

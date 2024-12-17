@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs')%>
+    <div class="grid">
+        <div class="message">
+            <div class="message-content">
+                <h1>Edit your vinyl posting.</h1>
+                <p>You can make changes to your posting anytime!</p>
+            </div>
+        </div>
+        <div class="form">
+            <form method="POST" action="/vinyls/<%= vinyl.id %>?_method=PUT" enctype="multipart/form-data">
+
+                <label for="condition">Condition</label>
+                <select id="condition" name="condition">
+                    <option value="New" <%= vinyl.condition === 'New' ? 'selected' : '' %>>New</option>
+                    <option value="Like New" <%= vinyl.condition === 'Like New' ? 'selected' : '' %>>Like New</option>
+                    <option value="Very Good" <%= vinyl.condition === 'Used' ? 'selected' : '' %>>Very Good</option>
+                    <option value="Good" <%= vinyl.condition === 'Used' ? 'selected' : '' %>>Good</option>
+                    <option value="Other" <%= vinyl.condition === 'Other' ? 'selected' : '' %>>Other</option>
+                </select>
+            
+                <label for="title">Title</label><br>
+                <input type="text" id="title" name="title" value="<%= vinyl.title %>">
+
+            
+                <label for="seller">Seller</label><br>
+                <input type="text" id="seller" name="seller" value="<%= vinyl.seller %>">
+            
+                <label for="price">Price ($)</label>
+                <input type="number" id="price" name="price" value="<%= vinyl.price %>" step="0.01" >
+            
+                <label for="details">Details</label><br>
+                <textarea id="details" name="details" rows="4" cols="50" ><%= vinyl.details %></textarea>
+
+                <label for="imageUpload">Upload an Image</label><br>
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*" ><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+            
+        </div>
+        
+    </div>
+<%- include('../partials/footer.ejs')%>
