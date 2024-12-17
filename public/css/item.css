@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+:root {
+  --pink: #e4dbda;
+  --dark: #1b2e26;
+  --light: #f3e3d7;
+  --sage: #969f83; 
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  margin: 0;
+  padding-top: 50px; 
+  box-sizing: border-box;
+  background-color: var(--light);
+}
+
+/** Navigation bar & header styling **/ 
+.navbar {
+  background-color: var(--light);
+  padding: 10px 25px;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  display: flex; 
+  z-index: 1000; 
+  
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+} 
+
+.navbar-header {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  margin-right: 20px;
+}
+
+.navbar-brand img {
+  width: 60px; 
+  height: auto;
+}
+.navbar-toggle {
+  display: none; 
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.navbar-nav .nav-item { 
+  margin: 0 15px;
+}
+
+.navbar-nav a {
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 18px;
+  padding: 8px 0;
+  transition: color 0.3s;
+}
+
+.navbar-nav a:hover {
+  text-decoration: underline; 
+}
+
+.navbar-nav .active {
+  background-color: var(--dark);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+/** search bar styling **/ 
+.search {
+  display: flex;
+  justify-content: flex-end;  
+  flex: 1; 
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding-right: 40px; 
+}
+
+.search-container input {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid var(--light);
+  border-radius: 4px;
+  margin-right: 5px;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 15px; 
+  padding: 7px; 
+}
+
+.search-container button {
+  padding: 5px 5px;
+  background-color: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  height: 30px; 
+}
+
+.search-container button:hover {
+  background-color: var(--pink);
+}
+
+/* Footer Styling */
+footer {
+  background-color: var(--dark);
+  color: white;
+  padding: 10px 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%; 
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#vision-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.mediaIcons {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.mediaIcons li {
+  margin: 0 10px;
+}
+
+.mediaIcons i {
+  font-size: 24px;
+  color: white;
+  transition: color 0.3s;
+}
+
+.mediaIcons i:hover {
+  color: var(--sage);
+  cursor: pointer;
+}
+
+.footer-right {
+  text-align: right;
+  margin: 0; 
+  padding-right: 30px; 
+  
+}
+
+/** Main Content Styling **/ 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: center;  
+    margin: 100px 150px; 
+    padding: 100px 0px 30px;
+    background-color: var(--light);  
+}
+
+.album-image { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.album-image img { 
+    height: 500px;
+    width: 500px; 
+    border-radius: 20px; 
+    box-shadow: 10px 10px 5px gray;
+}
+
+.item { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px; 
+    padding-bottom: 30px;
+}
+
+.item-content { 
+    height: 500px;
+    width: 500px; 
+    border-radius: 20px; 
+    box-shadow: 10px 10px 5px gray;
+    text-align: center; 
+    background-color: var(--sage)
+   
+}
+
+.item-buttons {
+  display: flex;
+  gap: 10px; 
+  margin-top: 80px; 
+  margin-left: 150px; 
+}
+
+#edit-button, #delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white; 
+}
+
+#edit-button {
+  background-color: #0f4c5c; 
+}
+
+#delete-button {
+  background-color: #9a031e; 
+}
+
+#item-name { 
+   font-family: 'Rubik Mono One', sans-serif;
+   color:#354f52; 
+    font-size: 30px
+    padding: 20px 40px; 
+    margin-bottom: 40px; 
+}
+
+#item-description { 
+  padding-top: 20px;
+}
+
+.item-details { 
+    text-align: left; 
+    padding-left: 20px; 
+    font-size: 18px; 
+}
+ 
+.success {
+  background: rgba(108, 192, 112, 0.7);
+  color: #fff;
+  width: 80%; 
+  margin: 30px auto;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.error {
+  background: rgba(255, 102, 51, 0.7);
+  color: #fff;
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.offer-form {
+  border-radius: 15px;
+  padding-left: 60px; 
+  padding-top: 3px; 
+  text-align: center;
+  margin-bottom: 100px; 
+  max-width: 400px;
+}
+
+.offer-form h3 {
+  color: var(--dark);
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 15px; 
+}
+
+.offer-form input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 10px;
+  border: 1px solid var(--sage);
+  border-radius: 10px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.offer-form button {
+  padding: 10px 20px;
+  background-color: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: 'Roboto Mono', monospace;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.offer-form button:hover {
+  background-color: var(--pink);
+  color: var(--dark); 
+  transform: scale(1.05);
+}
