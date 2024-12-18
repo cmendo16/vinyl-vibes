@@ -13,10 +13,10 @@
 ---
 
 ## Tech Stack
-- **Front-end**: React.js
+- **Front-end**: EJS
 - **Back-end**: Node.js, Express.js
 - **Database**: MongoDB
-- **Styling**: CSS/Bootstrap
+- **Styling**: CSS
 - **Development Tools**: Nodemon
 
 ---
