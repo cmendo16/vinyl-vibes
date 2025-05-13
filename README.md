@@ -1,8 +1,6 @@
 # Vinyl Vibes
 
-**Vinyl Vibes** is a full-stack web marketplace where users can view, sell, and make offers on vinyl records.
-
-Built using: JavaScript, CSS, HTML, and MongoDB using the MVC architecture. 
+**Vinyl Vibes** is a full-stack web marketplace where users can view, sell, and make offers on vinyl records. 
 
 ---
 
